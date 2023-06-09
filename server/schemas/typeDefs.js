@@ -28,6 +28,7 @@ export const typeDefs = `
         description: String!
         author: [String]
         link: String
+        image: String
 
     }
     type Mutation{
