@@ -2,7 +2,7 @@ import  {Book, User} from '../models';
 import {AuthenticationError } from 'apollo-server-express';
 import {signToken} from '../utils/auth';
 
-export const resolvers = {
+const resolvers = {
     Query: {
         me: async(parent, context) => {
             if(context.user){
@@ -54,4 +54,6 @@ export const resolvers = {
         }
     }
 };
+
+export default resolvers;
 

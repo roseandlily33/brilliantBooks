@@ -1,10 +1,11 @@
 import {gql} from 'apollo-server-express';
 
-export const typeDefs = `
+const typeDefs = `
     type User {
         _id: ID!
         username: String!
         email: String!
+        password: String!
         bookCount: Int
         savedBooks: [Book]
     }
@@ -42,4 +43,6 @@ export const typeDefs = `
     }
 
 `;
+
+export default typeDefs;
 
