@@ -20,7 +20,6 @@ export const typeDefs = `
     type Auth{
         token: ID!
         user: User
-
     }
     type BookInput {
         bookId: Int

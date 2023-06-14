@@ -30,8 +30,6 @@ export const resolvers = {
             const user = User.create({username, email, password});
             const token = signToken(user);
             return {token, user};
-
-
         },
         saveBook: async(parent, args, context) => {
            if(context.user){
