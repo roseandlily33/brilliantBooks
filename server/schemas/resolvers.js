@@ -1,6 +1,7 @@
-import  {Book, User} from '../models';
-import {AuthenticationError } from 'apollo-server-express';
-import {signToken} from '../utils/auth';
+const  {Book, User} = require('../models');
+const {signToken} = require('../utils/auth');
+const {AuthenticationError} = require('apollo-server-express');
+const auth = require('../utils/auth')
 
 const resolvers = {
     Query: {
@@ -38,8 +39,7 @@ const resolvers = {
                 {$addToSet: {savedBooks: newBook}}, {new: true});
              return user;
            }
-           throw new AuthenticationError('You need to be logged in to create a book')
-
+           throw new AuthenticationError('You need to be logged in to create a book');
 
         },
         removeBook: async(parent, args, context) => {
@@ -55,5 +55,5 @@ const resolvers = {
     }
 };
 
-export default resolvers;
+module.exports = resolvers;
 
