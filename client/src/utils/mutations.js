@@ -7,6 +7,7 @@ mutation login($email: String!, $password: String!){
         user{
             _id
             username
+            password
         }
     }
 }
@@ -26,7 +27,7 @@ mutation addUser($username: String!, $email: String!, $password: String!) {
 }`;
 
 export const SAVE_BOOK = gql `
-mutation saveBook ($bookInput: BookInput!){
+mutation saveBook ($bookInput: BookInput){
     saveBook(bookData: $bookInput){
         _id
         username
@@ -35,12 +36,11 @@ mutation saveBook ($bookInput: BookInput!){
             bookId
             title
             description
-            author
+            authors
             link
             image
         }
     }
-
 }
 `;
 
@@ -54,7 +54,7 @@ mutation removeBook($bookId: ID!) {
             bookId
             title
             description
-            author
+            authors
             link
             image
         }
