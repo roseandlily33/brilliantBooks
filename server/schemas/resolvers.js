@@ -32,9 +32,10 @@ const resolvers = {
             return {token, user};
         },
         saveBook: async(parent, args, context) => {
+            console.log('BOOK ARGS', args.bookData, args);
            if(context.user){
             const user = await User.findOneAndUpdate({_id: context.user._id},
-                {$push: {savedBooks: args.BookInput}}, {new: true});
+                {$push: {savedBooks: args.bookData}}, {new: true});
              return user;
            }
            throw new AuthenticationError('You need to be logged in to create a book');
