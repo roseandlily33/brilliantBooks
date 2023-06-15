@@ -40,12 +40,14 @@ const resolvers = {
            }
            throw new AuthenticationError('You need to be logged in to create a book');
         },
-        removeBook: async(parent, args, context) => {
+        removeBook: async(parent, {bookId}, context) => {
+            console.log('REMOVED Book', bookId)
             if(context.user){
                const removedBook =  await User.findOneAndUpdate({
                     _id: context.user._id
                 }, 
-                {$pull: {savedBooks: args.bookId}}, {new: true});
+                {$pull: {savedBooks: {bookId}}}, {new: true});
+                console.log('REMOVED 2 ', removedBook);
                 return removedBook;
             }
             throw new AuthenticationError('User is not logged in')
